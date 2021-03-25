@@ -1,6 +1,6 @@
 # JBProjectsPython
 Repository for my JetBrains Academy projects. 
-I've included the level of difficulty that JetBrains has attached to each project.
+I've included the level of difficulty that JetBrains has attached to each project. They range in difficulty from easy to challenging. 
 
 ## Zoo Keeper
 This is a 'easy' Python project that I worked on to get more familar with the language and its syntax. Users can 'go to the zoo' and 'see' animals. 
