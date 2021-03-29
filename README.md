@@ -2,9 +2,6 @@
 Repository for my JetBrains Academy projects. 
 I've included the level of difficulty that JetBrains has attached to each project. They range in difficulty from easy to challenging. 
 
-## Zoo Keeper - level easy
-This is a 'easy' Python project that I worked on to get more familar with the language and its syntax. Users can 'go to the zoo' and 'see' animals. 
-
 ## Tic-tac-toe - level easy
 This is a 'easy' Python project that I worked on where two users can play against each other in a game of tic tac toe using the standard output and input. 
 
