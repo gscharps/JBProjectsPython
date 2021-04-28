@@ -74,7 +74,7 @@ class UserInterface:
         print('2. Log into account')
         print('0. Exit')
         return int(input())
-    def logged_in_menu(self):
+    def sub_menu(self):
         print('1. Balance')
         print('2. Log out')
         print('0. Exit')
@@ -85,7 +85,7 @@ class UserInterface:
         else:
             return False
     def display_card_info(self, Acct):
-        print('\nYou card has been created') 
+        print('\nYou card has been created')
         print('Your card number:')
         print(Acct.number)
         print('Your card PIN:')
@@ -93,37 +93,40 @@ class UserInterface:
 
 UI = UserInterface()
 db = Database()
-choice = UI.main_menu()
+main_menu_selection = UI.main_menu()
 acct_generator = AccountGenerator()
+sub_menu_selection = None
 
-while choice != 0:
-    if choice == 1:
+while main_menu_selection != 0:
+    if main_menu_selection == 1:
         newAcct = acct_generator.CreateAccount()
         while db.acct_exists(newAcct.number, newAcct.pin):
             newAcct = acct_generator.CreateAccount()
         db.insert_acct(newAcct)
         UI.display_card_info(newAcct)
-        choice = UI.main_menu()
+        main_menu_selection = UI.main_menu()
         continue
 
-    elif choice == 2:
+    elif main_menu_selection == 2:
         number = int(input('\nEnter your card number:'))
         pin = int(input('Enter your PIN:'))
         if UI.login(db, number, pin):
             print('You have successfully logged in!')
-            logged_in_choice = UI.logged_in_menu()
-            while logged_in_choice != 0:
-                if logged_in_choice == 1:
+            sub_menu_selection = UI.sub_menu()
+            while sub_menu_selection != 0:
+                if sub_menu_selection == 1:
                     print('Balance: ' + str(db.get_balance(acct_num)))
-                    logged_in_choice = UI.logged_in_menu()
+                    sub_menu_selection = UI.sub_menu()
                     continue
-                elif logged_in_choice == 2:
+                elif sub_menu_selection == 2:
                     print('You have successfully logged out!')
                     break
         else:
             print('Wrong card number or PIN!')
-            logged_in_user = None
-    choice = UI.main_menu()
+    if sub_menu_selection == 0:
+        main_menu_selection = 0
+    else:
+        main_menu_selection = UI.main_menu()
 print('Bye!')
 
 db.close()
